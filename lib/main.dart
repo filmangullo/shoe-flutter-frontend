@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shoe/pages/sign_in_page.dart';
+import 'package:shoe/pages/splash_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -9,23 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      routes: {
+        '/': (context) => SplashPage(),
+        '/sign-in': (content) => SignInPage()
+      },
     );
   }
 }
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Image.asset(
-        'assets/image_splash.png'
-      ),
-    );
-  }
-}
-
