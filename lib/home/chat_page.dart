@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoe/theme.dart';
+import 'package:shoe/widgets/chat_tile.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class ChatPage extends StatelessWidget {
     );
   }
 
-  Widget content()
+  Widget emptyChat()
   {
     return Expanded(
         child: Container(
@@ -34,7 +35,7 @@ class ChatPage extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/icon_headset.png',
-              width: 80,
+                width: 80,
               ),
               SizedBox(
                 height: 20,
@@ -42,8 +43,8 @@ class ChatPage extends StatelessWidget {
               Text(
                 'Opp no message yet?',
                 style: primaryTextStyle.copyWith(
-                  fontSize: 16,
-                  fontWeight: medium
+                    fontSize: 16,
+                    fontWeight: medium
                 ),
               ),
               const SizedBox(
@@ -61,25 +62,42 @@ class ChatPage extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 10
-                    ),
-                    backgroundColor: primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)
-                    )
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24,
+                          vertical: 10
+                      ),
+                      backgroundColor: primaryColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)
+                      )
                   ),
                   child: Text(
                     'Explore Store',
                     style: primaryTextStyle.copyWith(
-                      fontWeight: medium,
-                      fontSize: 16
+                        fontWeight: medium,
+                        fontSize: 16
                     ),
-                ),
+                  ),
 
                 ),
               )
+            ],
+          ),
+        )
+    );
+  }
+  Widget content()
+  {
+    return Expanded(
+        child: Container(
+          width: double.infinity,
+          color: backgroundColor3,
+          child: ListView(
+            padding: EdgeInsets.symmetric(
+              horizontal: defaultMargin
+            ),
+            children: [
+              ChatTile(),
             ],
           ),
         )
@@ -92,6 +110,7 @@ class ChatPage extends StatelessWidget {
       children: [
         header(),
         content(),
+        // emptyChat(),
       ],
     );
   }
